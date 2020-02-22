@@ -1,6 +1,9 @@
 # pan.go
 
-> Go 实现企业级分布式云存储系统
+
+<div align="center">
+  <img src="./doc/cloud-storage.png" width="25%">
+</div>
 
 [TOC]
 
@@ -73,11 +76,11 @@ http://localhost:8080
 
 ### 3.1. 项目架构组成
 
-```
-![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcblxuICBCW-acjeWKoeWPkeeOsF0gLS0-IHzojrflj5Z8IEFb5LiK5Lyg6LCD5bqmXVxuICBEKCjnlKjmiLcpKSAtLT4gfOivt-axguS4iuS8oHwgQ1tBUEkg572R5YWzXSAtLT4gfOiOt-WPluS4iuS8oOiKgueCueWcsOWdgHwgQVvkuIrkvKDosIPluqZdXG4gIEQoKOeUqOaItykpIC0tPiB85a6e6ZmF5LiK5LygfCBGKFvkuIrkvKDmnI3liqHpm4bnvqRdKVxuICBGW-S4iuS8oOacjeWKoembhue-pF0gLS0-IHzmjqjpgIHovaznp7vku7vliqF8IEcoW-a2iOaBr-mYn-WIlyBNUV0pIC0tPiB86I635Y-W6L2s56e75Lu75YqhfCBIKFvovaznp7vmnI3liqHpm4bnvqRdKVxuICBIKFvovaznp7vmnI3liqHpm4bnvqRdKSAmIEVb6YWN572u5Lit5b-DXSAmIEYoW-S4iuS8oOacjeWKoembhue-pF0pIC0tPiB85rOo5YaMfCBCW-acjeWKoeWPkeeOsF1cbiAgRlvkuIrkvKDmnI3liqHpm4bnvqRdIC0tPiB85paH5Lu2IE1ldGEgLyDliIblnZcgTWV0YSAvIOenkuS8oHwgSShbREIgUHJveHldKVxuICBJKFtEQiBQcm94eV0pIC0tPiB85YiG5Z2XIE1ldGF8IEpbKFJlZGlzKV1cbiAgSShbREIgUHJveHldKSAtLT4gfOaWh-S7tiBNZXRhfCBLWyhNeVNRTCldXG4gIEgoW-i9rOenu-acjeWKoembhue-pF0pIC0tPiB85pu05paw5paH5Lu2IE1ldGF8IEkoW0RCIFByb3h5XSlcbiAgSChb6L2s56e75pyN5Yqh6ZuG576kXSkgLS0-IHzlhpkgT1NTfCBMWyhPU1MpXVxuICBIKFvovaznp7vmnI3liqHpm4bnvqRdKSAtLT4gfOWGmSBDZXBofCBNWyhDZXBoKV0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcblxuICBCW-acjeWKoeWPkeeOsF0gLS0-IHzojrflj5Z8IEFb5LiK5Lyg6LCD5bqmXVxuICBEKCjnlKjmiLcpKSAtLT4gfOivt-axguS4iuS8oHwgQ1tBUEkg572R5YWzXSAtLT4gfOiOt-WPluS4iuS8oOiKgueCueWcsOWdgHwgQVvkuIrkvKDosIPluqZdXG4gIEQoKOeUqOaItykpIC0tPiB85a6e6ZmF5LiK5LygfCBGKFvkuIrkvKDmnI3liqHpm4bnvqRdKVxuICBGW-S4iuS8oOacjeWKoembhue-pF0gLS0-IHzmjqjpgIHovaznp7vku7vliqF8IEcoW-a2iOaBr-mYn-WIlyBNUV0pIC0tPiB86I635Y-W6L2s56e75Lu75YqhfCBIKFvovaznp7vmnI3liqHpm4bnvqRdKVxuICBIKFvovaznp7vmnI3liqHpm4bnvqRdKSAmIEVb6YWN572u5Lit5b-DXSAmIEYoW-S4iuS8oOacjeWKoembhue-pF0pIC0tPiB85rOo5YaMfCBCW-acjeWKoeWPkeeOsF1cbiAgRlvkuIrkvKDmnI3liqHpm4bnvqRdIC0tPiB85paH5Lu2IE1ldGEgLyDliIblnZcgTWV0YSAvIOenkuS8oHwgSShbREIgUHJveHldKVxuICBJKFtEQiBQcm94eV0pIC0tPiB85YiG5Z2XIE1ldGF8IEpbKFJlZGlzKV1cbiAgSShbREIgUHJveHldKSAtLT4gfOaWh-S7tiBNZXRhfCBLWyhNeVNRTCldXG4gIEgoW-i9rOenu-acjeWKoembhue-pF0pIC0tPiB85pu05paw5paH5Lu2IE1ldGF8IEkoW0RCIFByb3h5XSlcbiAgSChb6L2s56e75pyN5Yqh6ZuG576kXSkgLS0-IHzlhpkgT1NTfCBMWyhPU1MpXVxuICBIKFvovaznp7vmnI3liqHpm4bnvqRdKSAtLT4gfOWGmSBDZXBofCBNWyhDZXBoKV0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
-```
 
-![](./doc/structure.png)
+<div align="center">
+  <img src="./doc/structure.png">
+</div>
+
 
 ```mermaid
 graph TD
@@ -207,7 +210,10 @@ _用户查询_
 - 用户/文件关联
 
 
-![](./doc/mermaid-diagram-20200219121557.svg)
+<div align="center">
+  <img src="./doc/flowchart.svg">
+</div>
+
 
 我们定义一个 "用户-文件表" 来存储上传的文件所属信息
 
@@ -271,6 +277,45 @@ Ceph 基础组件
 4. GW: 提供与 Amazon S3 和 Swift 兼容的 RESTful API 的 GateWay 服务
 
 
+### 3.7. 阿里云OSS实现海量数据上云
+
+略
+
+
+### 3.8. 基于 RabbitMQ 实现异步存储
+
+```
+graph LR
+  B[客户端] --> A[上传服务]
+  A[上传服务] --> B[客户端]
+  A[上传服务] --> C[临时存储] & D[任务队列] -.-> E[转移服务]
+  E[转移服务] -.-> F[OSS]
+  F[OSS] -.-> E[转移服务]
+```
+
+#### 异步逻辑的实现
+
+<div align="center">
+  <img src="./doc/async-architecture.svg">
+</div>
+
+
+
+#### Rabbit MQ 可以解决什么
+
+1. 逻辑解耦, 异步任务
+2. 支持消息持久化, 重启服务不会受到影响
+3. 削峰, 大规模消息处理
+
+#### Exchange 工作模式
+
+- Fanout: 类似**广播**, 转发到所有绑定交换机的 Queue
+- Direct: 类似**单播**, RoutingKey 和 BindingKey 完全匹配
+- Topic: 类似**组播**, 转发到符合通配符匹配的 Queue
+- Headers: 请求头与消息头匹配, 才能接受消息
+
+
+
 
 
 
@@ -286,3 +331,7 @@ Ceph 基础组件
 - 阿里云OSS: [文档首页](https://help.aliyun.com/product/31815.html?spm=a2c4g.750001.3.1.47287b13LQI3Ah)
 - gRPC: [官方文档中文版](http://doc.oschina.net/grpc?t=56831)
 - k8s: [中文社区](https://www.kubernetes.org.cn/docs)
+
+* * *
+
+Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
