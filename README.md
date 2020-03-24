@@ -5,7 +5,7 @@
   <img src="./doc/cloud-storage.png" width="15%">
 </div>
 
-[TOC]
+
 
 ## 1. 使用
 
@@ -81,6 +81,8 @@ http://localhost:8080
   <img src="./doc/structure.png">
 </div>
 
+
+mermaid 流程图代码:
 
 ```mermaid
 graph TD
@@ -284,6 +286,16 @@ Ceph 基础组件
 
 ### 3.8. 基于 RabbitMQ 实现异步存储
 
+
+#### 异步逻辑的实现
+
+<div align="center">
+  <img src="./doc/async-architecture.svg">
+</div>
+
+
+mermaid 流程图代码
+
 ```
 graph LR
   B[客户端] --> A[上传服务]
@@ -292,13 +304,6 @@ graph LR
   E[转移服务] -.-> F[OSS]
   F[OSS] -.-> E[转移服务]
 ```
-
-#### 异步逻辑的实现
-
-<div align="center">
-  <img src="./doc/async-architecture.svg">
-</div>
-
 
 
 #### Rabbit MQ 可以解决什么
@@ -320,6 +325,46 @@ graph LR
 | 工作模式 - Fanout     	| 工作模式 - Direct     	|
 | ![](./doc/topic.png)  	|                       	|
 | 工作模式 - Topic      	|                       	|
+
+
+
+### 3.9. 架构微服务化
+
+#### 3.9.1. 微服务的概念以及原理
+
+微服务的优点:
+
+1. 化繁为简, 分散治理
+2. 服务间松耦合, 服务内高内聚
+3. 服务科独立构建/部署/升级, 局部更新
+4. 提高系统容错性, 减少系统整体崩溃概率
+5. 易于实现异构系统
+
+微服务的缺点:
+
+1. 增加了运维部署的工作量与难度
+2. 增加了系统间调用逻辑的处理难度
+3. 日志更难收集和统计了
+4. 额外引入了一些非业务模块服务
+
+#### 3.9.2.
+
+
+
+
+
+### 3.10. Docker & K8s 容器化实战
+
+
+
+
+
+### 3.11. 持续集成部署
+
+
+
+
+
 
 
 
