@@ -347,26 +347,46 @@ graph LR
 3. 日志更难收集和统计了
 4. 额外引入了一些非业务模块服务
 
-#### 3.9.2.
-
-
-
-
 
 ### 3.10. Docker & K8s 容器化实战
 
+#### 3.10.1. Docker
+
+Docker 可以做到:
+
+1. 限制容器 CPU 以及内存的资源消耗
+2. 依赖环境隔离
+3. 快速扩容, 动态起停容器实例
 
 
+在这里喔们要用到 Docker 的一个工具 `Compose`, 使用 `docker-compose.yml` 进行编写. 是一个进行容器编排的工具
+
+主要步骤拆解:
+
+1. 通过 `Dockerfile` 定义容器环境, 打包成镜像
+2. 通过 `docker-compose.yml` 定义各个应用服务
+
+```bash
+$ sudo docker-compose up --scale upload=2 --scale download=2 -d
+```
+
+#### 3.10.2. Kubernetes
+
+K8s 是一个分布式系统支撑平台
+
+1. 底层可以基于 Docker 来包装应用
+2. 以集群的方式来运行/管理跨机器的容器应用
+3. 解决了 Docker 跨机器场景的容器通讯问题
+4. 拥有自动修复能力
+
+提供部署运行/资源调度/服务发现/动态伸缩等一系列功能
 
 
-### 3.11. 持续集成部署
+### 4. 总结
 
+![](./doc/keypoints.png)
 
-
-
-
-
-
+![](./doc/skillsets.png)
 
 ## 参考资料
 
