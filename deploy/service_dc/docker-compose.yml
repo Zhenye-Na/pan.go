@@ -1,0 +1,94 @@
+version: '2'
+
+services:
+  # api gate way service
+  apigw:
+    image: pan.go/apigw
+    networks:
+      - web
+    env_file:
+      - ./.env
+    environment:
+      - PARAMS=${registryAddr} ${redisAddr} ${mysqlAddr} ${mqAddr}
+    labels:
+      - "traefik.backend=apigw"
+      - "traefik.frontend.rule=Host:apigw.pan.go.com"
+      - "traefik.docker.port=8080"
+
+  # uploading service
+  upload:
+    image: pan.go/upload
+    networks:
+      - web
+    volumes:
+      - /data/pan.go:/data/pan.go
+      - /data/pan.go_part:/data/pan.go_part
+    env_file:
+      - ./.env
+    environment:
+      - PARAMS=${registryAddr} ${redisAddr} ${mysqlAddr} ${mqAddr}
+    labels:
+      - "traefik.backend=upload"
+      - "traefik.frontend.rule=Host:upload.pan.go.com"
+      - "traefik.docker.port=28080"
+
+  # downloading service
+  download:
+    image: pan.go/download
+    networks:
+      - web
+    volumes:
+      - /data/pan.go:/data/pan.go
+      - /data/pan.go_part:/data/pan.go_part
+    env_file:
+      - ./.env
+    environment:
+      - PARAMS=${registryAddr} ${redisAddr} ${mysqlAddr} ${mqAddr}
+    labels:
+      - "traefik.backend=upload"
+      - "traefik.frontend.rule=Host:upload.pan.go.com"
+      - "traefik.docker.port=38080"
+
+  # account service
+  account:
+    image: pan.go/account
+    networks:
+      - web
+    volumes:
+      - /data/pan.go:/data/pan.go
+      - /data/pan.go_part:/data/pan.go_part
+    env_file:
+      - ./.env
+    environment:
+      - PARAMS=${registryAddr} ${redisAddr} ${mysqlAddr} ${mqAddr}
+
+  # transfer service
+  transfer:
+    image: pan.go/transfer
+    networks:
+      - web
+    volumes:
+      - /data/pan.go:/data/pan.go
+      - /data/pan.go_part:/data/pan.go_part
+    env_file:
+      - ./.env
+    environment:
+      - PARAMS=${registryAddr} ${redisAddr} ${mysqlAddr} ${mqAddr}
+
+  # db proxy service
+  dbproxy:
+    image: pan.go/dbproxy
+    networks:
+      - web
+    volumes:
+      - /data/pan.go:/data/pan.go
+      - /data/pan.go_part:/data/pan.go_part
+    env_file:
+      - ./.env
+    environment:
+      - PARAMS=${registryAddr} ${redisAddr} ${mysqlAddr} ${mqAddr}
+
+networks:
+  web:
+    external:
+      name: pan.go

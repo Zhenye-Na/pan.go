@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: common-service
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: apigw.pan.gp.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: svc-apigw
+            servicePort: 8080
+    - host: upload.pan.go.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: svc-upload
+              servicePort: 28080
+    - host: download.pan.go.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: svc-download
+              servicePort: 38080
+
