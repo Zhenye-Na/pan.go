@@ -1,7 +1,7 @@
 package mq
 
 import (
-	"filestore-server/config"
+	"pan.go/config"
 	"log"
 
 	"github.com/streadway/amqp"
